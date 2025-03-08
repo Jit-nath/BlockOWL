@@ -1,20 +1,25 @@
 "use client";
-import { Sun, Search, Bell, Moon } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 import StudentTable from "@/components/students";
 import { useState } from "react";
@@ -24,6 +29,38 @@ import { ClassCard } from "@/components/ui/classCard";
 
 export default function DashboardPage() {
   const [dark, toggle] = useState<boolean>(true);
+
+  const students = [
+    { id: 1, name: "John Doe", subID: "ID", Marks: 0 },
+    { id: 2, name: "John Doe", subID: "ID", Marks: 0 },
+    { id: 3, name: "John Doe", subID: "ID", Marks: 0 },
+    { id: 4, name: "Bob Johnson", subID: "ID", Marks: 0 },
+  ];
+
+  const [studentMarks, setStudentMarks] = useState(
+    students.map((student) => ({
+      id: student.id,
+      name: student.name,
+      subID: student.subID,
+      marks: "",
+    }))
+  );
+
+  const [submitted, setSubmitted] = useState<Boolean>(false);
+
+  const handleMarksChange = (id: number, value: string) => {
+    setStudentMarks((prev) =>
+      prev.map((s) => (s.id === id ? { ...s, marks: value } : s))
+    );
+  };
+
+  const handleSubmit = () => {
+    setTimeout(() => {
+      setSubmitted(true);
+      const jsonData = JSON.stringify(studentMarks);
+      console.log(jsonData);
+    }, 1000);
+  };
 
   return (
     <div
@@ -69,69 +106,6 @@ export default function DashboardPage() {
       </header> */}
 
       <div className="flex flex-1">
-        {/* ................................................................................... */}
-        {/* Sidebar */}
-        {/* <aside className="hidden w-64 border-r bg-background/95 md:block">
-          <div className="flex h-full flex-col">
-            <div className="flex-1 overflow-auto py-2">
-              <nav className="grid items-start px-2 text-sm font-medium">
-                <Link
-                  href="#"
-                  className="flex items-center gap-3 rounded-lg bg-accent px-3 py-2 text-accent-foreground"
-                >
-                  <BarChart3 className="h-4 w-4" />
-                  Dashboard
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <BookOpen className="h-4 w-4" />
-                  Classes & Departments
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <FileText className="h-4 w-4" />
-                  Question Papers & Scores
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Users className="h-4 w-4" />
-                  Student Records
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  Classroom Chat
-                </Link>
-              </nav>
-            </div>
-            <div className="mt-auto border-t p-4">
-              <div className="flex items-center gap-3">
-                <Avatar className="h-9 w-9">
-                  <AvatarImage
-                    src="/placeholder.svg?height=36&width=36"
-                    alt="User"
-                  />
-                  <AvatarFallback>AD</AvatarFallback>
-                </Avatar>
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium">Admin User</span>
-                  <span className="text-xs text-muted-foreground">
-                    admin@saasify.edu
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside> */}
-
         {/* Main Content */}
         {/* .................................................................................................................. */}
         <main className="flex-1 overflow-auto m-2">
@@ -152,7 +126,9 @@ export default function DashboardPage() {
               <TabsContent value="classes" className="sm:w-full">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button className="mb-2 rounded-2xl cursor-pointer">Add Class</Button>
+                    <Button className="mb-2 rounded-2xl cursor-pointer">
+                      Add Class
+                    </Button>
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>
@@ -190,8 +166,68 @@ export default function DashboardPage() {
                 <ClassCard />
                 <ClassCard />
               </TabsContent>
-              <TabsContent value="exams" className="sm:w-full">
-                <Button className="mb-2 rounded-2xl cursor-pointer">Schedule Exam</Button>
+              <TabsContent value="exams" className="sm:w-full space-x-2">
+                <Button className="mb-2 rounded-2xl cursor-pointer">
+                  Schedule Exam
+                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="mb-2 rounded-2xl cursor-pointer">
+                      Upload Marks
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-3xl">
+                    <DialogHeader>
+                      <DialogTitle>
+                        Manually upload marks of your class
+                      </DialogTitle>
+                    </DialogHeader>
+                    {/* Scrollable Table Container */}
+                    <ScrollArea className="max-h-[80vh]">
+                      <Table>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead className="w-[100px]">ID</TableHead>
+                            <TableHead>Name</TableHead>
+                            <TableHead>Subject ID</TableHead>
+                            <TableHead>Marks</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {students.map((student) => (
+                            <TableRow key={student.id}>
+                              <TableCell>{student.id}</TableCell>
+                              <TableCell>{student.name}</TableCell>
+                              <TableCell>{student.subID}</TableCell>
+                              <TableCell>
+                                <Input
+                                  value={
+                                    studentMarks.find(
+                                      (s) => s.id === student.id
+                                    )?.marks || ""
+                                  }
+                                  onChange={(e) =>
+                                    handleMarksChange(
+                                      student.id,
+                                      e.target.value
+                                    )
+                                  }
+                                />
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </ScrollArea>
+                    <Button
+                      onClick={handleSubmit}
+                      variant={submitted ? "secondary" : "default"} 
+                    >
+                      {submitted ? "Done" : "Submit"}
+                    </Button>
+                  </DialogContent>
+                </Dialog>
+
                 <ExamCard />
                 <ExamCard />
                 <ExamCard />
