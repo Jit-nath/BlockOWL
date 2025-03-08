@@ -28,7 +28,7 @@ import { ExamCard } from "@/components/ui/ExamCard";
 import { ClassCard } from "@/components/ui/classCard";
 
 export default function DashboardPage() {
-  const [dark, toggle] = useState<boolean>(true);
+  // const [dark, toggle] = useState<boolean>(true);
 
   const students = [
     { id: 1, name: "John Doe", subID: "ID", Marks: 0 },
@@ -46,7 +46,7 @@ export default function DashboardPage() {
     }))
   );
 
-  const [submitted, setSubmitted] = useState<Boolean>(false);
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const handleMarksChange = (id: number, value: string) => {
     setStudentMarks((prev) =>

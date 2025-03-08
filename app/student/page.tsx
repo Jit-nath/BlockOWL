@@ -13,11 +13,6 @@ export default function StudentProfile() {
         </CardHeader>
         <CardContent>
           <div className="flex items-center space-x-4">
-            <img
-              src="/avatar.png"
-              alt="Student"
-              className="w-20 h-20 rounded-full"
-            />
             <div>
               <h2 className="text-xl font-semibold">John Doe</h2>
               <p className="text-sm text-gray-500">ID: 123456</p>

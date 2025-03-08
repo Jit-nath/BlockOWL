@@ -14,6 +14,7 @@ export default function ClassroomChat() {
     },
     { id: 2, user: "Student", text: "Hello, Sir!", sender: "student" },
   ]);
+  setMessages([]);
 
   return (
     <div className="flex flex-col w-full h-screen bg-gray-50 dark:bg-gray-900">
