@@ -45,40 +45,40 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+.light {
+  --background: rgb(255, 255, 255);
+    --foreground: rgb(37, 37, 37);
+    --card: rgb(255, 255, 255);
+    --card-foreground: rgb(37, 37, 37);
+    --popover: rgb(255, 255, 255);
+    --popover-foreground: rgb(37, 37, 37);
+    --primary: rgb(54, 54, 54);
+    --primary-foreground: rgb(251, 251, 251);
+    --secondary: rgb(247, 247, 247);
+    --secondary-foreground: rgb(54, 54, 54);
+    --muted: rgb(247, 247, 247);
+    --muted-foreground: rgb(141, 141, 141);
+    --accent: rgb(247, 247, 247);
+    --accent-foreground: rgb(54, 54, 54);
+    --destructive: rgb(216, 61, 39);
+    --destructive-foreground: rgb(216, 61, 39);
+    --border: rgb(235, 235, 235);
+    --input: rgb(235, 235, 235);
+    --ring: rgb(182, 182, 182);
+    --chart-1: rgb(222, 157, 63);
+    --chart-2: rgb(91, 167, 171);
+    --chart-3: rgb(92, 112, 205);
+    --chart-4: rgb(242, 183, 83);
+    --chart-5: rgb(241, 167, 74);
+    --radius: 0.625rem;
+    --sidebar: rgb(251, 251, 251);
+    --sidebar-foreground: rgb(37, 37, 37);
+    --sidebar-primary: rgb(54, 54, 54);
+    --sidebar-primary-foreground: rgb(251, 251, 251);
+    --sidebar-accent: rgb(247, 247, 247);
+    --sidebar-accent-foreground: rgb(54, 54, 54);
+    --sidebar-border: rgb(235, 235, 235);
+    --sidebar-ring: rgb(182, 182, 182);
 }
 
 .dark {
@@ -128,4 +128,104 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+.fluid-animation {
+  max-width: 100%;
+  /* Adjust as needed */
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: radial-gradient(circle at 50% 50%, #340047, #3b2e90, #695277, #211b38);
+  background-size: 300% 300%;
+  animation: fluidMotion 5s infinite ease-in-out alternate;
+  filter: blur(70px);
+}
+
+@keyframes fluidMotion {
+  0% {
+    background-position: 40% 40%;
+    transform: scaleY(1) rotate(0deg);
+  }
+
+  25% {
+    background-position: 60% 60%;
+    transform: scaleY(1.05) rotate(2deg);
+  }
+
+  50% {
+    background-position: 80% 80%;
+    transform: scaleY(1.1) rotate(-2deg);
+  }
+
+  75% {
+    background-position: 60% 60%;
+    transform: scaleY(1.05) rotate(2deg);
+  }
+
+  100% {
+    background-position: 40% 40%;
+    transform: scaleY(1) rotate(0deg);
+  }
+}
+
+.text-animation {
+  color: #fff;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #fff;
+  transform: translateY(5px);
+
+}
+
+.text-animation::before {
+  content: "Make";
+  /* Initial text */
+  display: inline-block;
+  animation: typing 1s steps(1) 1s forwards, blink 0.75s step-end infinite, textChange 12s 6s forwards;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+    /* Makes the cursor disappear */
+  }
+}
+
+@keyframes textChange {
+  0% {
+    content: "Make";
+  }
+
+  25% {
+    content: "Make";
+  }
+
+  100% {
+    content: "Meet";
+  }
+}
+
+.multicolor-shadow {
+  box-shadow:
+    4px 4px 100px rgba(138, 0, 131, 0.353),
+    /* Red shadow */
+    -4px -4px 100px rgba(114, 0, 95, 0.389),
+    /* Green shadow */
+    4px -4px 100px rgba(142, 0, 135, 0.3),
+    /* Blue shadow */
+    -4px 4px 100px rgba(64, 0, 49, 0.3);
+  /* Yellow shadow */
 }

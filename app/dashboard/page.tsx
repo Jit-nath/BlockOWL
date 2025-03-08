@@ -1,43 +1,29 @@
-import Link from "next/link";
-import {
-  BookOpen,
-  FileText,
-  Users,
-  BarChart3,
-  MessageSquare,
-  Plus,
-  Search,
-  Bell,
-  User,
-} from "lucide-react";
+"use client";
+import { Sun, Search, Bell, Moon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import StudentTable from "@/components/students";
+import { useState } from "react";
+import ClassroomChat from "@/components/Chatui";
+import { ExamCard } from "@/components/ui/ExamCard";
+import { ClassCard } from "@/components/ui/classCard";
 
 export default function DashboardPage() {
+  const [dark, toggle] = useState<boolean>(true);
+
   return (
-    <div className="flex min-h-screen flex-col dark bg-background text-foreground dark">
+    <div
+      className={`flex min-h-screen flex-col dark bg-background text-foreground w-screen`}
+      id="haveToBeDark"
+    >
       {/* Header */}
-      <header className="sticky top-0 z-10 border-b bg-background/95 backdrop-blur">
+      {/* .................................................................................................................. */}
+      {/* <header className="sticky top-0 z-10 border-b bg-background/95 backdrop-blur">
         <div className="container flex h-16 items-center justify-between py-4">
           <div className="flex items-center gap-2">
             <div className="relative h-8 w-8 overflow-hidden rounded-full bg-primary">
@@ -49,6 +35,12 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex items-center gap-4">
+            <div
+              className="cursor-pointer p-2"
+              onClick={() => toggle((prev) => !prev)}
+            >
+              {dark ? <Sun /> : <Moon />}
+            </div>
             <div className="relative w-64">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input placeholder="Search..." className="pl-8" />
@@ -65,11 +57,12 @@ export default function DashboardPage() {
             </Avatar>
           </div>
         </div>
-      </header>
+      </header> */}
 
       <div className="flex flex-1">
+        {/* ................................................................................... */}
         {/* Sidebar */}
-        <aside className="hidden w-64 border-r bg-background/95 md:block">
+        {/* <aside className="hidden w-64 border-r bg-background/95 md:block">
           <div className="flex h-full flex-col">
             <div className="flex-1 overflow-auto py-2">
               <nav className="grid items-start px-2 text-sm font-medium">
@@ -128,50 +121,44 @@ export default function DashboardPage() {
               </div>
             </div>
           </div>
-        </aside>
+        </aside> */}
 
         {/* Main Content */}
-        <main className="flex-1 overflow-auto">
+        {/* .................................................................................................................. */}
+        <main className="flex-1 overflow-auto m-2">
           <div className="container py-6">
-            <h1 className="mb-6 text-2xl font-bold">Dashboard</h1>
-            <Tabs defaultValue="overview" className="space-y-4">
+            <h1 className="mb-6 text-2xl font-bold">Hi name!</h1>
+            <Tabs defaultValue="overview" className="space-y-2 ">
               <TabsList>
                 <TabsTrigger value="overview">Overview</TabsTrigger>
                 <TabsTrigger value="classes">Classes</TabsTrigger>
                 <TabsTrigger value="exams">Exams</TabsTrigger>
                 <TabsTrigger value="students">Students</TabsTrigger>
-                <TabsTrigger value="communication">Communication</TabsTrigger>
+                <TabsTrigger value="communication">Chat</TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview" className="space-y-4">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Recent Activity</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>Name</TableHead>
-                          <TableHead>Action</TableHead>
-                          <TableHead>Time</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        <TableRow>
-                          <TableCell>John Doe</TableCell>
-                          <TableCell>Submitted Math Quiz 3</TableCell>
-                          <TableCell>2 hours ago</TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell>Alice Smith</TableCell>
-                          <TableCell>Created a new question paper</TableCell>
-                          <TableCell>Yesterday at 3:45 PM</TableCell>
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  </CardContent>
-                </Card>
+                overview
+              </TabsContent>
+              <TabsContent value="classes" className="sm:w-full">
+                <Button className="mb-4 rounded-2xl">Add Class</Button>
+                <ClassCard />
+                <ClassCard />
+                <ClassCard />
+                <ClassCard />
+              </TabsContent>
+              <TabsContent value="exams" className="sm:w-full">
+                <Button className="mb-4 rounded-2xl">Schedule Exam</Button>
+                <ExamCard />
+                <ExamCard />
+                <ExamCard />
+                <ExamCard />
+              </TabsContent>
+              <TabsContent value="students">
+                <StudentTable />
+              </TabsContent>
+              <TabsContent value="communication">
+                <ClassroomChat />
               </TabsContent>
             </Tabs>
           </div>
