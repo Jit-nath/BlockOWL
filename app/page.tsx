@@ -13,10 +13,10 @@ export default function Home() {
         <div className="flex items-center gap-2">
           <div className="relative h-10 w-10 overflow-hidden rounded-full bg-primary">
             <div className="absolute inset-0 flex items-center justify-center text-lg font-bold text-primary-foreground">
-              S
+              EV
             </div>
           </div>
-          <span className="text-xl font-bold">SaaSify</span>
+          <span className="text-xl font-bold">EduVault</span>
         </div>
         <nav className="hidden space-x-4 md:flex">
           <Link
@@ -78,7 +78,7 @@ export default function Home() {
         <section id="features" className="container py-12 md:py-24 lg:py-32">
           <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-3">
             <h2 className="col-span-full text-3xl font-bold tracking-tighter md:text-4xl">
-              How SaaSify Works
+              How EduVault Works
             </h2>
 
             <div className="flex flex-col items-start gap-2 rounded-lg border p-6 bg-gradient-to-br from-blue-900 to-blue-950">
@@ -134,7 +134,7 @@ export default function Home() {
               work and boost productivity.
             </p>
             <Button size="lg" className="mt-4">
-              <Link href="/login">Start Using SaaSify</Link>
+              <Link href="/login">Start Using Eduvault</Link>
             </Button>
           </div>
         </section>
@@ -146,13 +146,13 @@ export default function Home() {
             <div className="flex items-center gap-2">
               <div className="relative h-8 w-8 overflow-hidden rounded-full bg-primary">
                 <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-primary-foreground">
-                  S
+                  EV
                 </div>
               </div>
-              <p className="text-sm font-medium">SaaSify</p>
+              <p className="text-sm font-medium">EduVault</p>
             </div>
             <p className="text-center text-sm text-muted-foreground md:text-left">
-              &copy; {new Date().getFullYear()} SaaSify, Inc. All rights
+              &copy; {new Date().getFullYear()} EduVault, Inc. All rights
               reserved.
             </p>
           </div>

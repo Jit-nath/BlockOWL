@@ -7,6 +7,15 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
 import StudentTable from "@/components/students";
 import { useState } from "react";
 import ClassroomChat from "@/components/Chatui";
@@ -141,14 +150,48 @@ export default function DashboardPage() {
                 overview
               </TabsContent>
               <TabsContent value="classes" className="sm:w-full">
-                <Button className="mb-4 rounded-2xl">Add Class</Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="mb-2 rounded-2xl cursor-pointer">Add Class</Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Insert Class Details</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      {/* Label for the input field */}
+                      <label
+                        htmlFor="class-name"
+                        className="text-sm font-medium"
+                      >
+                        Class Name
+                      </label>
+                      <Input
+                        id="class-name"
+                        placeholder="Enter Class Name"
+                        className="w-full mt-2"
+                      />
+                      <label
+                        htmlFor="class-name"
+                        className="text-sm font-medium"
+                      >
+                        Semester
+                      </label>
+                      <Input
+                        id="class-name"
+                        placeholder="Enter Semester"
+                        className="w-full mt-2"
+                      />
+                    </div>
+                  </DialogContent>
+                </Dialog>
                 <ClassCard />
                 <ClassCard />
                 <ClassCard />
                 <ClassCard />
               </TabsContent>
               <TabsContent value="exams" className="sm:w-full">
-                <Button className="mb-4 rounded-2xl">Schedule Exam</Button>
+                <Button className="mb-2 rounded-2xl cursor-pointer">Schedule Exam</Button>
                 <ExamCard />
                 <ExamCard />
                 <ExamCard />

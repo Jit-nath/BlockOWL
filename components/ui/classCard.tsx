@@ -7,7 +7,7 @@ interface Card {
 
 export function ClassCard({ ...Card }) {
   return (
-    <div className="w-full text-white h-12 flex justify-between items-center p-6 mb-2 border border-white/10">
+    <div className="w-full text-white h-12 flex justify-between items-center p-6 mb-2 border border-white/10 bg-white/10">
       <p>1</p>
       <h1>Class name</h1>
       <p>Semester</p>
