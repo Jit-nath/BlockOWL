@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 
 interface InstitutionDetailsFormProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   form: UseFormReturn<any>;
 }
 

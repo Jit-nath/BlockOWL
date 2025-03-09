@@ -14,6 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 
 interface AccountSetupFormProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   form: UseFormReturn<any>;
 }
 
@@ -22,7 +23,7 @@ export function AccountSetupForm({ form }: AccountSetupFormProps) {
     <div className="space-y-4">
       <h2 className="text-xl font-semibold">Account Setup</h2>
       <p className="text-sm text-muted-foreground mb-4">
-        Create your administrator account to manage your institution's digital
+        Create your administrator account to manage your institution&apos;s digital
         classrooms.
       </p>
 

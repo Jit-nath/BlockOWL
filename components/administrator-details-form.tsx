@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 interface AdministratorDetailsFormProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   form: UseFormReturn<any>;
 }
 
