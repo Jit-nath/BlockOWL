@@ -63,7 +63,7 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Button asChild size="lg">
-                <Link href="/login">
+                <Link href="/registration">
                   Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -127,14 +127,13 @@ export default function Home() {
         <section className="container py-12 md:py-24 lg:py-32">
           <div className="mx-auto flex max-w-[980px] flex-col items-center gap-4 text-center">
             <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
-              Ready to Transform Your Workflow?
+              Ready to Transform Your Institution?
             </h2>
             <p className="max-w-[750px] text-lg text-muted-foreground">
-              Join thousands of teams already using SaaSify to streamline their
-              work and boost productivity.
+              Join today and get exclusive offers
             </p>
             <Button size="lg" className="mt-4">
-              <Link href="/login">Start Using Eduvault</Link>
+              <Link href="/restration">Start Using Eduvault</Link>
             </Button>
           </div>
         </section>
