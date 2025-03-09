@@ -3,7 +3,6 @@ import MarksSection from "@/components/MarksSection";
 import ClassroomSection from "@/components/ClassroomSection";
 import QuizSection from "@/components/QuizSection";
 import ExamSection from "@/components/ExamSection";
-
 export default function StudentProfile() {
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">

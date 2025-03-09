@@ -23,10 +23,13 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 import StudentTable from "@/components/students";
 import { useState } from "react";
-import ClassroomChat from "@/components/Chatui";
+// import ClassroomChat from "@/components/Chatui";
 import { ExamCard } from "@/components/ui/ExamCard";
 import { ClassCard } from "@/components/ui/classCard";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Bell, Search, Sun } from "lucide-react";
 
+import GoogleFormModal from "@/components/schedule-Exam";
 export default function DashboardPage() {
   // const [dark, toggle] = useState<boolean>(true);
 
@@ -35,6 +38,13 @@ export default function DashboardPage() {
     { id: 2, name: "John Doe", subID: "ID", Marks: 0 },
     { id: 3, name: "John Doe", subID: "ID", Marks: 0 },
     { id: 4, name: "Bob Johnson", subID: "ID", Marks: 0 },
+    { id: 5, name: "Bob Johnson", subID: "ID", Marks: 0 },
+    { id: 6, name: "Bob Johnson", subID: "ID", Marks: 0 },
+    { id: 7, name: "Bob Johnson", subID: "ID", Marks: 0 },
+    { id: 8, name: "Bob Johnson", subID: "ID", Marks: 0 },
+    { id: 9, name: "Bob Johnson", subID: "ID", Marks: 0 },
+    { id: 10, name: "Bob Johnson", subID: "ID", Marks: 0 },
+    { id: 11, name: "Bob Johnson", subID: "ID", Marks: 0 },
   ];
 
   const [studentMarks, setStudentMarks] = useState(
@@ -69,27 +79,24 @@ export default function DashboardPage() {
     >
       {/* Header */}
       {/* .................................................................................................................. */}
-      {/* <header className="sticky top-0 z-10 border-b bg-background/95 backdrop-blur">
+      <header className="sticky top-0 z-10 border-b bg-background/95 backdrop-blur m-2">
         <div className="container flex h-16 items-center justify-between py-4">
           <div className="flex items-center gap-2">
             <div className="relative h-8 w-8 overflow-hidden rounded-full bg-primary">
               <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-primary-foreground">
-                S
+                EV
               </div>
             </div>
-            <span className="text-xl font-bold">SaaSify EDU</span>
+            <span className="text-xl font-bold">EduVault</span>
           </div>
 
           <div className="flex items-center gap-4">
-            <div
-              className="cursor-pointer p-2"
-              onClick={() => toggle((prev) => !prev)}
-            >
-              {dark ? <Sun /> : <Moon />}
+            <div className="cursor-pointer p-2">
+              <Sun />
             </div>
-            <div className="relative w-64">
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input placeholder="Search..." className="pl-8" />
+            <div className="relative w-8 sm:w-64">
+              <Search className="sm:hidden" />
+              <Input placeholder="Search..." className="pl-8 hidden sm:block" />
             </div>
             <Button variant="ghost" size="icon">
               <Bell className="h-5 w-5" />
@@ -103,143 +110,141 @@ export default function DashboardPage() {
             </Avatar>
           </div>
         </div>
-      </header> */}
+      </header>
 
       <div className="flex flex-1">
         {/* Main Content */}
         {/* .................................................................................................................. */}
         <main className="flex-1 overflow-auto m-2">
           <div className="container py-6">
-            <h1 className="mb-6 text-2xl font-bold">Hi name!</h1>
-            <Tabs defaultValue="overview" className="space-y-2 ">
-              <TabsList>
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="classes">Classes</TabsTrigger>
-                <TabsTrigger value="exams">Exams</TabsTrigger>
-                <TabsTrigger value="students">Students</TabsTrigger>
-                <TabsTrigger value="communication">Chat</TabsTrigger>
-              </TabsList>
+            <h1 className="mb-6 text-2xl font-bold text-center sm:text-left">
+              Hi Jit...
+            </h1>
+            <div className="flex sm:block justify-center">
+              <Tabs defaultValue="classes" className="space-y-2 ">
+                <TabsList>
+                  <TabsTrigger value="classes">Classes</TabsTrigger>
+                  <TabsTrigger value="exams">Exams</TabsTrigger>
+                  <TabsTrigger value="students">Students</TabsTrigger>
+                  <TabsTrigger value="communication">Chat</TabsTrigger>
+                </TabsList>
 
-              <TabsContent value="overview" className="space-y-4">
-                overview
-              </TabsContent>
-              <TabsContent value="classes" className="sm:w-full">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="mb-2 rounded-2xl cursor-pointer">
-                      Add Class
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Insert Class Details</DialogTitle>
-                    </DialogHeader>
-                    <div className="space-y-4">
-                      {/* Label for the input field */}
-                      <label
-                        htmlFor="class-name"
-                        className="text-sm font-medium"
-                      >
-                        Class Name
-                      </label>
-                      <Input
-                        id="class-name"
-                        placeholder="Enter Class Name"
-                        className="w-full mt-2"
-                      />
-                      <label
-                        htmlFor="class-name"
-                        className="text-sm font-medium"
-                      >
-                        Semester
-                      </label>
-                      <Input
-                        id="class-name"
-                        placeholder="Enter Semester"
-                        className="w-full mt-2"
-                      />
-                    </div>
-                  </DialogContent>
-                </Dialog>
-                <ClassCard />
-                <ClassCard />
-                <ClassCard />
-                <ClassCard />
-              </TabsContent>
-              <TabsContent value="exams" className="sm:w-full space-x-2">
-                <Button className="mb-2 rounded-2xl cursor-pointer">
-                  Schedule Exam
-                </Button>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="mb-2 rounded-2xl cursor-pointer">
-                      Upload Marks
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-3xl">
-                    <DialogHeader>
-                      <DialogTitle>
-                        Manually upload marks of your class
-                      </DialogTitle>
-                    </DialogHeader>
-                    {/* Scrollable Table Container */}
-                    <ScrollArea className="max-h-[80vh]">
-                      <Table>
-                        <TableHeader>
-                          <TableRow>
-                            <TableHead className="w-[100px]">ID</TableHead>
-                            <TableHead>Name</TableHead>
-                            <TableHead>Subject ID</TableHead>
-                            <TableHead>Marks</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {students.map((student) => (
-                            <TableRow key={student.id}>
-                              <TableCell>{student.id}</TableCell>
-                              <TableCell>{student.name}</TableCell>
-                              <TableCell>{student.subID}</TableCell>
-                              <TableCell>
-                                <Input
-                                  value={
-                                    studentMarks.find(
-                                      (s) => s.id === student.id
-                                    )?.marks || ""
-                                  }
-                                  onChange={(e) =>
-                                    handleMarksChange(
-                                      student.id,
-                                      e.target.value
-                                    )
-                                  }
-                                />
-                              </TableCell>
+                <TabsContent value="classes" className="sm:w-full">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="mb-2 rounded-2xl cursor-pointer">
+                        Add Class
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Insert Class Details</DialogTitle>
+                      </DialogHeader>
+                      <div className="space-y-4">
+                        {/* Label for the input field */}
+                        <label
+                          htmlFor="class-name"
+                          className="text-sm font-medium"
+                        >
+                          Class Name
+                        </label>
+                        <Input
+                          id="class-name"
+                          placeholder="Enter Class Name"
+                          className="w-full mt-2"
+                        />
+                        <label
+                          htmlFor="class-name"
+                          className="text-sm font-medium"
+                        >
+                          Semester
+                        </label>
+                        <Input
+                          id="class-name"
+                          placeholder="Enter Semester"
+                          className="w-full mt-2"
+                        />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                  <ClassCard />
+                  <ClassCard />
+                  <ClassCard />
+                  <ClassCard />
+                </TabsContent>
+                <TabsContent value="exams" className="sm:w-full space-x-2">
+                  <GoogleFormModal />
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="mb-2 rounded-2xl cursor-pointer">
+                        Upload Marks
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-3xl">
+                      <DialogHeader>
+                        <DialogTitle>
+                          Manually upload marks of your class
+                        </DialogTitle>
+                      </DialogHeader>
+                      {/* Scrollable Table Container */}
+                      <ScrollArea className="max-h-[80vh]">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead className="w-[100px]">ID</TableHead>
+                              <TableHead>Name</TableHead>
+                              <TableHead>Subject ID</TableHead>
+                              <TableHead>Marks</TableHead>
                             </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </ScrollArea>
-                    <Button
-                      onClick={handleSubmit}
-                      variant={submitted ? "secondary" : "default"} 
-                    >
-                      {submitted ? "Done" : "Submit"}
-                    </Button>
-                  </DialogContent>
-                </Dialog>
+                          </TableHeader>
+                          <TableBody>
+                            {students.map((student) => (
+                              <TableRow key={student.id}>
+                                <TableCell>{student.id}</TableCell>
+                                <TableCell>{student.name}</TableCell>
+                                <TableCell>{student.subID}</TableCell>
+                                <TableCell>
+                                  <Input
+                                    value={
+                                      studentMarks.find(
+                                        (s) => s.id === student.id
+                                      )?.marks || ""
+                                    }
+                                    onChange={(e) =>
+                                      handleMarksChange(
+                                        student.id,
+                                        e.target.value
+                                      )
+                                    }
+                                  />
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </ScrollArea>
+                      <Button
+                        onClick={handleSubmit}
+                        variant={submitted ? "secondary" : "default"}
+                      >
+                        {submitted ? "Done" : "Submit"}
+                      </Button>
+                    </DialogContent>
+                  </Dialog>
 
-                <ExamCard />
-                <ExamCard />
-                <ExamCard />
-                <ExamCard />
-              </TabsContent>
-              <TabsContent value="students">
-                <StudentTable />
-              </TabsContent>
-              <TabsContent value="communication">
-                <ClassroomChat />
-              </TabsContent>
-            </Tabs>
+                  <ExamCard />
+                  <ExamCard />
+                  <ExamCard />
+                  <ExamCard />
+                </TabsContent>
+                <TabsContent value="students">
+                  <StudentTable />
+                </TabsContent>
+                <TabsContent value="communication">
+                  {/* <ClassroomChat /> */}
+                </TabsContent>
+              </Tabs>
+            </div>
           </div>
         </main>
       </div>

@@ -25,6 +25,9 @@ const students = [
   },
   { id: 4, name: "Sara Lee", age: 21, course: "Biotechnology", grade: "A" },
   { id: 5, name: "David Kim", age: 23, course: "Mathematics", grade: "B" },
+  { id: 6, name: "David Kim", age: 23, course: "Mathematics", grade: "B" },
+  { id: 7, name: "David Kim", age: 23, course: "Mathematics", grade: "B" },
+  { id: 8, name: "David Kim", age: 23, course: "Mathematics", grade: "B" },
 ];
 
 const StudentTable = () => {

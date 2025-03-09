@@ -4,6 +4,8 @@ import Demo from "@/components/demo";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import WalletConnect from "@/components/wallet/WalletConnect";
+import EduchainWallet from "@/components/wallet/wallet";
 
 export default function Home() {
   return (
@@ -18,29 +20,15 @@ export default function Home() {
           </div>
           <span className="text-xl font-bold">EduVault</span>
         </div>
-        <nav className="hidden space-x-4 md:flex">
-          <Link
-            href="#features"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground"
-          >
-            Features
-          </Link>
-          <Link
-            href="#demo"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground"
-          >
-            Demo
-          </Link>
+        <nav className=" space-x-4 flex justify-center">
           <Link
             href={"/student"}
             className="text-sm font-medium text-muted-foreground hover:text-foreground"
           >
-            Student
+            Student Demo
           </Link>
         </nav>
-        <Button asChild size="sm">
-          <Link href="/login">Login</Link>
-        </Button>
+        <EduchainWallet />
       </header>
 
       <main className="flex-1">
@@ -67,8 +55,8 @@ export default function Home() {
                   Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg">
-                <Link href="/dashboard">Demo</Link>
+              <Button variant="link" size="lg">
+                <Link href="/dashboard">View a demo</Link>
               </Button>
             </div>
           </div>
