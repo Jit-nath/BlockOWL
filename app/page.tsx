@@ -4,7 +4,6 @@ import Demo from "@/components/demo";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import WalletConnect from "@/components/wallet/WalletConnect";
 import EduchainWallet from "@/components/wallet/wallet";
 
 export default function Home() {

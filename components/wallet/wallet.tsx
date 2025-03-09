@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 
+
 const EduchainWallet = () => {
   const [walletAddress, setWalletAddress] = useState("");
   const [error, setError] = useState("");

@@ -63,7 +63,7 @@ export default function DashboardPage() {
       prev.map((s) => (s.id === id ? { ...s, marks: value } : s))
     );
   };
-
+// .......................................................................................
   const handleSubmit = () => {
     setTimeout(() => {
       setSubmitted(true);
@@ -71,7 +71,7 @@ export default function DashboardPage() {
       console.log(jsonData);
     }, 1000);
   };
-
+// ........................................................................................
   return (
     <div
       className={`flex min-h-screen flex-col dark bg-background text-foreground w-screen`}
