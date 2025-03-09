@@ -42,7 +42,7 @@ export default function Home() {
         >
           <div className="mx-auto flex max-w-[980px] flex-col items-center gap-4 text-center">
             <h1 className="text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl lg:leading-[1.1]">
-              <span className="text-animation"></span> Smart Education
+              <span className="text-pink-400">MEET</span> Smart Education
             </h1>
             <p className="max-w-[750px] text-lg text-muted-foreground sm:text-xl">
               Ensuring trust, security, and transparency in academic records
