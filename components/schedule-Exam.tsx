@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -44,7 +43,6 @@ export default function GoogleFormModal() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [formTitle, setFormTitle] = useState("Schedule Exam");
 
-
   // Initial questions
   const [questions, setQuestions] = useState<Question[]>([
     {
@@ -62,9 +60,9 @@ export default function GoogleFormModal() {
     {
       id: "q3",
       type: "radio",
-      title: "How would you rate your experience?",
+      title: "MCQ type question",
       required: true,
-      options: ["Excellent", "Good", "Average", "Poor"],
+      options: ["Option 1", "Option 2", "Option 3", "Option 4"],
     },
     {
       id: "q4",
@@ -87,6 +85,7 @@ export default function GoogleFormModal() {
   ]);
 
   // Dynamic form data based on questions
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [formData, setFormData] = useState<Record<string, any>>({});
 
   // Handle input change for text, email, and textarea
@@ -447,7 +446,7 @@ export default function GoogleFormModal() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="rounded-2xl">Open Feedback Form</Button>
+        <Button className="rounded-2xl">Schedule Exam</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto">
         <form onSubmit={handleSubmit}>
@@ -465,10 +464,7 @@ export default function GoogleFormModal() {
                   {formTitle}
                 </DialogTitle>
               )}
-              <Button
-                type="button"
-                onClick={() => setIsEditMode(!isEditMode)}
-              >
+              <Button type="button" onClick={() => setIsEditMode(!isEditMode)}>
                 {isEditMode ? "Preview Form" : "Edit Form"}
               </Button>
             </div>
@@ -488,10 +484,7 @@ export default function GoogleFormModal() {
 
           <div className="grid gap-6 py-6">
             {questions.map((question) => (
-              <Card
-                key={question.id}
-                className="p-4 border shadow-sm"
-              >
+              <Card key={question.id} className="p-4 border shadow-sm">
                 {renderQuestion(question)}
               </Card>
             ))}

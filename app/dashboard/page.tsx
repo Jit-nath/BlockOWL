@@ -84,10 +84,10 @@ export default function DashboardPage() {
           <div className="flex items-center gap-2">
             <div className="relative h-8 w-8 overflow-hidden rounded-full bg-primary">
               <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-primary-foreground">
-                EV
+                BO
               </div>
             </div>
-            <span className="text-xl font-bold">EduVault</span>
+            <span className="text-xl font-bold">BlockOWL</span>
           </div>
 
           <div className="flex items-center gap-4">
@@ -106,7 +106,7 @@ export default function DashboardPage() {
                 src="/placeholder.svg?height=32&width=32"
                 alt="User"
               />
-              <AvatarFallback>AD</AvatarFallback>
+              <AvatarFallback>U</AvatarFallback>
             </Avatar>
           </div>
         </div>

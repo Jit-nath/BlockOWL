@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 
-
 const EduchainWallet = () => {
   const [walletAddress, setWalletAddress] = useState("");
   const [error, setError] = useState("");
@@ -30,10 +29,12 @@ const EduchainWallet = () => {
       if (currentChainId !== targetChainId) {
         try {
           // Try switching to Educhain
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           await window.ethereum.request({
             method: "wallet_switchEthereumChain",
             params: [{ chainId: targetChainId }],
           });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (switchError: any) {
           // If the chain is not added, add it
           if (switchError.code === 4902) {
@@ -51,14 +52,17 @@ const EduchainWallet = () => {
                   },
                 ],
               });
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } catch (addError: any) {
               setError("Failed to add Educhain network.");
+              console.log(addError);
             }
           } else {
             setError("Failed to switch to Educhain.");
           }
         }
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message);
     }
